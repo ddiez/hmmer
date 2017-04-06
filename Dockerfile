@@ -1,11 +1,9 @@
 FROM ubuntu:latest
 MAINTAINER Diego Diez <diego10ruiz@gmail.com>
 
-# Update the repository sources list.
-RUN apt-get update
-
-## Add general tools.
-RUN apt-get install -y build-essential
+# Install dependencies.
+RUN apt-get update && \
+    apt-get install -y gcc make
 
 ## Install MEME suite.
 # Download and untar.
