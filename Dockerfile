@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:testing
 MAINTAINER Diego Diez <diego10ruiz@gmail.com>
 
 # Install dependencies.
