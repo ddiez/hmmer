@@ -4,6 +4,7 @@ services:
   - docker
 
 install:
-  - docker build .
+  - docker build -t hmmer .
 
 script:
+  - docker run hmmer hmmsearch -h
