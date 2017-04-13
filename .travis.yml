@@ -5,3 +5,5 @@ services:
 
 install:
   - docker build .
+
+script:
