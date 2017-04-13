@@ -6,3 +6,5 @@ install:
 
 script:
   - docker run hmmer hmmsearch -h
+  - git clone ddiez/dataset
+  - docker run -v $(pwd):/home/biodev hmmer hmmsearch dataset/hmm/Ras.hmm dataset/fasta/uniprot.fasta
