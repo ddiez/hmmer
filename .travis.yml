@@ -4,7 +4,9 @@ services:
 install:
   - docker build -t hmmer .
 
+before_script:
+  - git clone https://github.com/ddiez/dataset.git
+
 script:
   - docker run hmmer hmmsearch -h
-  - git clone ddiez/dataset
   - docker run -v $(pwd):/home/biodev hmmer hmmsearch dataset/hmm/Ras.hmm dataset/fasta/uniprot.fasta
