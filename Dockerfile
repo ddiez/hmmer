@@ -8,12 +8,20 @@ LABEL maintainer Diego Diez <diego10ruiz@gmail.com>
 #  4. Cleanup source and dependencies.
 RUN apt-get update && \
     apt-get install -y gcc make curl && \
+
+    # build.
     curl http://eddylab.org/software/hmmer3/3.1b2/hmmer-3.1b2.tar.gz > /tmp/hmmer-3.1b2.tar.gz && \
     cd /tmp && tar zxvf hmmer-3.1b2.tar.gz && \
-    cd /tmp/hmmer-3.1b2 && ./configure --prefix /opt && \
-    cd /tmp/hmmer-3.1b2 && make && \
-    cd /tmp/hmmer-3.1b2 && make install && \
-    cd /tmp && rm -rf /tmp/hmmer-3.1b2 && \
+    cd /tmp/hmmer-3.1b2 && \
+    ./configure --prefix /opt && \
+    make && \
+    make install && \
+
+    # clean up.
+    cd /tmp && \
+    rm -rf /tmp/hmmer-3.1b2 && \
+    rm hmmer-3.1b2.tar.gz && \
+    apt-get clean -y && \
     apt-get purge -y gcc make curl && \
     apt-get autoremove -y
 
