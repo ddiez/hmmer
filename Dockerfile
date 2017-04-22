@@ -1,5 +1,5 @@
 FROM debian:testing
-MAINTAINER Diego Diez <diego10ruiz@gmail.com>
+LABEL maintainer Diego Diez <diego10ruiz@gmail.com>
 
 ## Install HMMER.
 #  1. Get dependencies.
