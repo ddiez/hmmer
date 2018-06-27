@@ -2,7 +2,7 @@ services:
   - docker
 
 install:
-  - docker build -t hmmer .
+  - docker build -t -t ddiez/hmmer .
 
 before_script:
   - git clone https://github.com/ddiez/dataset.git
