@@ -10,3 +10,12 @@ before_script:
 script:
   - docker run hmmer hmmsearch -h
   - docker run -v $(pwd):/home/biodev hmmer hmmsearch dataset/hmm/Ras.hmm dataset/fasta/uniprot.fasta
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push ddiez/hmmer;
+      VERSION=`docker run ddiez/hmmer printenv VERSION`;
+      docker tag ddiez/hmmer ddiez/hmmer:$VERSION;
+      docker push ddiez/hmmer:$VERSION;
+    fi
